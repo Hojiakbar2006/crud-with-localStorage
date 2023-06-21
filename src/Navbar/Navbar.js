@@ -1,6 +1,6 @@
 import React from "react";
-import "./Navbar.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import "./Navbar.css";
 
 export function Navbar() {
   const location = useLocation().pathname;
