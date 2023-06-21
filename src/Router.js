@@ -7,13 +7,30 @@ import { useEffect, useState } from "react";
 
 export function Router() {
   const location = useLocation().pathname;
+
   const [data, setData] = useState(
     JSON.parse(localStorage.getItem("list")) || []
   );
 
+  ///======setData
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(data));
+    localStorage.setItem("list", JSON.stringify(data));
   }, [data]);
+
+  ///======delete
+  const deleteList = (i) => {
+    const filterData = data.filter((element, index) => {
+      return element.id !== i;
+    });
+
+    setData(filterData);
+  };
+
+  ///=======edit
+  const editList = (i) => {
+    console.log(i);
+  };
+
   return (
     <>
       <Navbar />
@@ -29,7 +46,12 @@ export function Router() {
             path="/create_form"
             element={<Form data={data} setData={setData} />}
           />
-          <Route path="/" element={<View data={data} />} />
+          <Route
+            path="/"
+            element={
+              <View data={data} deleteList={deleteList} editList={editList} />
+            }
+          />
         </Routes>
       </div>
     </>

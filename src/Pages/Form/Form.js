@@ -2,7 +2,9 @@ import { useState, React } from "react";
 import "./Form.css";
 
 export function Form({ data, setData }) {
+  // const [validation, setvalidation] = useState(false);
   const [value, setValue] = useState({
+    id: "",
     name: "",
     email: "",
     address: "",
@@ -13,7 +15,25 @@ export function Form({ data, setData }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        setData([...data, value]);
+        // if (value.name.trim() === 0) {
+        //   setvalidation(true);
+        // } else if (value.email.trim() === 0) {
+        //   setvalidation(true);
+        // } else if (value.address.trim() === 0) {
+        //   setvalidation(true);
+        // } else if (value.phone.trim() === 0) {
+        //   setvalidation(true);
+        // } else {
+        //   setvalidation(false);
+        // }
+
+        setData([
+          ...data,
+          {
+            ...value,
+            id: Date.now().toString(36) + Math.random().toString(36),
+          },
+        ]);
       }}
     >
       <label>
