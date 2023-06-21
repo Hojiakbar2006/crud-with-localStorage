@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thead > th {
+  border-bottom: 2px solid #5a5a5c48;
+}
+table > tr > th {
+  font-size: 18px;
+  color: #48494c;
+  height: 40px;
+}
+
+.btn-gr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-gr > button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.8s ease-in;
+}
+
+.btn-gr > button > svg:hover {
+  width: 30px;
+}
+
+.btn-gr > button > svg:active {
+  width: 20px;
+}
