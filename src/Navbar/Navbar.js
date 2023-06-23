@@ -8,7 +8,9 @@ export function Navbar() {
 
   return (
     <div className="navBar">
-      <h1>CRUD APP</h1>
+      <h1 style={{cursor:"pointer"}} onClick={()=>{
+        navigate("/")
+      }}>CRUD APP</h1>
 
       {location === "/create_form"||location==="/edit_form" ? (
         <button

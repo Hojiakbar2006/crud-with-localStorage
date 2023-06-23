@@ -59,7 +59,7 @@ export function CreateForm() {
             setValue({ ...value, email: e.target.value });
           }}
           value={value.email}
-          type="text"
+          type="email"
           placeholder="Enter Email"
         />
       </label>
