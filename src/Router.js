@@ -1,50 +1,30 @@
-import { Route, Routes, useLocation } from "react-router";
-import "./App.css";
+import {
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import { CreateForm } from "./Pages/Form/CreateForm";
 import { View } from "./Pages/VIew/View";
-import { Navbar } from "./Navbar/Navbar";
-import { Config } from "./Config/Config";
+import { Config } from "./Redux/Config";
 import { EditForm } from "./Pages/Form/EditForm";
+import { RootLayout } from "./RootLayout/RootLayout";
 
 export function Router() {
-  
-  const location = useLocation().pathname;
+  const routes = createBrowserRouter(
+    createRoutesFromElements(
+      <Route element={<RootLayout/>}>
+        <Route path="/create_form" element={<CreateForm />} />
+        <Route path="/edit_form" element={<EditForm />} />
+        <Route path="/" element={<View />} />
+      </Route>
+    )
+  );
 
   return (
     <>
-      <Navbar />
-      <div className="employe">
-        {location === "/create_form" ? (
-          <h1>Create Employe</h1>
-        ) : (
-          <h1>Manage Employees</h1>
-        )}
-
-        <Routes>
-          <Route
-            path="/create_form"
-            element={
-              <CreateForm
-              />
-            }
-          />
-          <Route
-            path="/edit_form"
-            element={
-              <EditForm
-              />
-            }
-          />
-            <Route
-              path="/"
-              element={
-                <View />
-              }
-            />
-        </Routes>
-        
-      </div>
-      <Config/>
+      <Config />
+      <RouterProvider router={routes} />
     </>
   );
 }

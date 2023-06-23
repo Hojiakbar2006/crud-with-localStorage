@@ -19,7 +19,12 @@ form > label {
   border: none;
 }
 
-form > label > input {
+form > label > ::-webkit-input-placeholder {
+  color: #777777;
+}
+
+form > label > input,
+form > label > label {
   padding: 15px;
   border: 2px solid #33333300;
   background: none;
@@ -27,6 +32,21 @@ form > label > input {
   outline: none;
   font-size: 18px;
   border-radius: 6px;
+}
+
+.selectImg {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+  color: #777777;
+}
+.selectImg > input {
+  width: 0;
+}
+
+form > label > label > input {
+  visibility: hidden;
 }
 
 form > label > input:focus {

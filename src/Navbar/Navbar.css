@@ -4,8 +4,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
   background: #1898f3;
+  padding: 0 20px;
 }
 
 .navBar > h1 {
@@ -13,7 +13,13 @@
   letter-spacing: 3px;
 }
 
-.navBar > button {
+.navBar > div {
+  display: flex;
+  overflow: hidden;
+  padding: 15px 0;
+}
+
+.navBar > div > button {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -30,7 +36,7 @@
   cursor: pointer;
 }
 
-.navBar > button:active {
+.navBar > div > button:active {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -10px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
@@ -41,6 +47,62 @@
   border: 4px solid #666b75;
   border-left: 0;
   border-top: 0;
-
   transform: rotate(135deg);
+}
+
+.navBar > div > :nth-child(1) {
+  transform: translateX(300px);
+}
+
+.hidden1 {
+  animation: btnClose1 0.2s both;
+  display: none;
+}
+
+@keyframes btnClose1 {
+  0% {
+    transform: translateX(180px);
+  }
+  100% {
+    transform: translateX(-210px);
+  }
+}
+
+.show1 {
+  animation: btnOpen1 0.5s both;
+  z-index: 1;
+}
+
+@keyframes btnOpen1 {
+  0% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(180px);
+  }
+}
+.hidden2 {
+  animation: btnClose2 0.2s both;
+}
+
+@keyframes btnClose2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+.show2 {
+  animation: btnOpen2 0.5s both;
+}
+
+@keyframes btnOpen2 {
+  0% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

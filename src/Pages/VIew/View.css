@@ -1,50 +1,53 @@
 .view {
-  height: 600px;
-  overflow: auto;
-  width: 1200px;
+  min-height: 100px;
+  max-height: 600px;
+  overflow-x: scroll;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.124) 0px 1px 4px 1px inset;
   border-radius: 6px;
 }
 
-table {
-  width: 98%;
-  border-collapse: collapse;
-  margin: auto;
-}
-
-thead {
-  box-shadow: 0px 2px 0px 0px rgba(133, 123, 123, 0.75);
-}
-
-table th {
-  font-size: 18px;
-  color: #48494c;
-  height: 40px;
-}
-
-.btn-gr {
+.tBody{
+  width: 400px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #0000000e;
+  margin: 3%;
+  border-radius: 10px;
+  padding: 20px;
 }
 
-.btn-gr > button {
+.tBody>h3{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.btn-group{
+  width: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-group>button{
   width: 30px;
   height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: none;
   border: none;
+  transition: all .5s ease;
   cursor: pointer;
-  transition: all 0.8s ease-in;
 }
-
-.btn-gr > button > img:hover {
+.btn-group>button>img:hover{
   width: 30px;
+  height: 30px;
 }
-
-.btn-gr > button > img:active {
-  width: 20px;
+.btn-group>button>img:active{
+  width: 15px;
+  height: 15px;
 }
