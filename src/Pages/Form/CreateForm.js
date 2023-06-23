@@ -1,8 +1,12 @@
-import { useState, React } from "react";
+import { React, useState } from "react";
 import "./Form.css";
+import { PatternFormat } from "react-number-format";
+import { useDispatch, useSelector } from "react-redux";
+import { acData } from "../../Redux/Data";
 
-export function Form({ data, setData }) {
-  // const [validation, setvalidation] = useState(false);
+export function CreateForm() {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.data);
   const [value, setValue] = useState({
     id: "",
     name: "",
@@ -15,25 +19,23 @@ export function Form({ data, setData }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        // if (value.name.trim() === 0) {
-        //   setvalidation(true);
-        // } else if (value.email.trim() === 0) {
-        //   setvalidation(true);
-        // } else if (value.address.trim() === 0) {
-        //   setvalidation(true);
-        // } else if (value.phone.trim() === 0) {
-        //   setvalidation(true);
-        // } else {
-        //   setvalidation(false);
-        // }
+        dispatch(
+          acData([
+            ...data,
+            {
+              ...value,
+              id: Date.now().toString(36) + Math.random().toString(36),
+            },
+          ])
+        );
 
-        setData([
-          ...data,
-          {
-            ...value,
-            id: Date.now().toString(36) + Math.random().toString(36),
-          },
-        ]);
+        setValue({
+          id: "",
+          name: "",
+          email: "",
+          address: "",
+          phone: "",
+        });
       }}
     >
       <label>
@@ -43,6 +45,7 @@ export function Form({ data, setData }) {
           onChange={(e) => {
             setValue({ ...value, name: e.target.value });
           }}
+          value={value.name}
           type="text"
           name="name"
           placeholder="Enter Name"
@@ -55,6 +58,7 @@ export function Form({ data, setData }) {
           onChange={(e) => {
             setValue({ ...value, email: e.target.value });
           }}
+          value={value.email}
           type="text"
           placeholder="Enter Email"
         />
@@ -66,19 +70,21 @@ export function Form({ data, setData }) {
           onChange={(e) => {
             setValue({ ...value, address: e.target.value });
           }}
+          value={value.address}
           type="text"
           placeholder="Enter Address"
         />
       </label>
       <label>
         Phone
-        <input
-          autoComplete="off"
-          onChange={(e) => {
-            setValue({ ...value, phone: e.target.value });
+        <PatternFormat
+          format="+998 (##) ###-##-##"
+          allowEmptyFormatting
+          value={value.phone}
+          onValueChange={(e) => {
+            const floatValue = e.floatValue;
+            setValue({ ...value, phone: floatValue || "" });
           }}
-          type="text"
-          placeholder="Enter Phone"
         />
       </label>
 

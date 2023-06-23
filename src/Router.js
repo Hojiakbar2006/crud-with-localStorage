@@ -1,35 +1,14 @@
 import { Route, Routes, useLocation } from "react-router";
 import "./App.css";
-import { Form } from "./Pages/Form/Form";
+import { CreateForm } from "./Pages/Form/CreateForm";
 import { View } from "./Pages/VIew/View";
 import { Navbar } from "./Navbar/Navbar";
-import { useEffect, useState } from "react";
+import { Config } from "./Config/Config";
+import { EditForm } from "./Pages/Form/EditForm";
 
 export function Router() {
+  
   const location = useLocation().pathname;
-
-  const [data, setData] = useState(
-    JSON.parse(localStorage.getItem("list")) || []
-  );
-
-  ///======setData
-  useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(data));
-  }, [data]);
-
-  ///======delete
-  const deleteList = (i) => {
-    const filterData = data.filter((element, index) => {
-      return element.id !== i;
-    });
-
-    setData(filterData);
-  };
-
-  ///=======edit
-  const editList = (i) => {
-    console.log(i);
-  };
 
   return (
     <>
@@ -44,16 +23,28 @@ export function Router() {
         <Routes>
           <Route
             path="/create_form"
-            element={<Form data={data} setData={setData} />}
-          />
-          <Route
-            path="/"
             element={
-              <View data={data} deleteList={deleteList} editList={editList} />
+              <CreateForm
+              />
             }
           />
+          <Route
+            path="/edit_form"
+            element={
+              <EditForm
+              />
+            }
+          />
+            <Route
+              path="/"
+              element={
+                <View />
+              }
+            />
         </Routes>
+        
       </div>
+      <Config/>
     </>
   );
 }

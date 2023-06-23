@@ -12,14 +12,11 @@ table {
   margin: auto;
 }
 
-.thead {
+thead {
   box-shadow: 0px 2px 0px 0px rgba(133, 123, 123, 0.75);
 }
 
-/* .thead > th {
-  border-bottom: 2px solid #5a5a5c48;
-} */
-table > tr > th {
+table th {
   font-size: 18px;
   color: #48494c;
   height: 40px;

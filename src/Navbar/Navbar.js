@@ -10,10 +10,11 @@ export function Navbar() {
     <div className="navBar">
       <h1>CRUD APP</h1>
 
-      {location === "/create_form" ? (
+      {location === "/create_form"||location==="/edit_form" ? (
         <button
           onClick={() => {
-            navigate("/");
+            navigate(-1);
+            localStorage.removeItem("index")
           }}
         >
           <div className="thick-arrow-left"></div> Back
